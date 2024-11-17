@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
@@ -10,6 +12,7 @@ import 'package:smart_home_app/utils/managers/value_manager.dart';
 import 'package:smart_home_app/utils/widgets/lime_green_rounded_button.dart';
 import 'package:smart_home_app/utils/widgets/small_text_field_widget.dart';
 import 'package:smart_home_app/utils/widgets/text_field_underlined.dart';
+import 'package:google_generative_ai/google_generative_ai.dart';
 
 class NewMealPage extends StatefulWidget {
   const NewMealPage({super.key});
@@ -48,6 +51,63 @@ class _NewMealPageState extends State<NewMealPage> {
     final consumptionProvider =
         Provider.of<ConsumptionProvider>(context, listen: false);
 
+    //api fetch function
+   void _fetchapi() async {
+  if (_mealTitleController.text.isEmpty || _mealAmountController.text.isEmpty) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Please enter both meal name and amount!')),
+    );
+    return;
+  }
+
+  final String mealName = _mealTitleController.text;
+  final String mealAmount = _mealAmountController.text;
+
+  try {
+    final model = GenerativeModel(
+      model: 'gemini-1.5-flash',
+      apiKey: 'AIzaSyAXczCcaNC6DFktLJz8rZ-jG0wwEdd6ZX8',
+    );
+
+    final prompt =
+        'Provide nutritional content (kCal, Carbs, Fats, Proteins) for $mealAmount grams of $mealName as a JSON object.If you do not know the nutritional value,just give some random guess,but give the answer and do not write unnecessary information.';
+
+    
+    final response = await model.generateContent([Content.text(prompt)]);
+    final String? responseText = response.text;
+
+    // Clean the response text to extract JSON
+    final cleanedResponse = responseText
+        ?.replaceAll(RegExp(r'^```json'), '')
+        .replaceAll(RegExp(r'```'), '')
+        .trim();
+
+    // Parse response JSON
+    final Map<String, dynamic> nutritionData = jsonDecode(cleanedResponse);
+
+    // Update the UI
+    setState(() {
+      _mealCalloriesController.text = nutritionData['kcal'].toString();
+      _mealCarbsController.text = nutritionData['carbs'].toString();
+      _mealFatsController.text = nutritionData['fats'].toString();
+      _mealProteinsController.text = nutritionData['proteins'].toString();
+    });
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Nutritional data fetched successfully!')),
+    );
+  } catch (error) {
+    print('Error fetching nutritional data: $error');
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text('Failed to fetch nutritional data.')),
+    );
+  }
+}
+
+final prompt =
+        'Provide nutritional content (kCal, Carbs, Fats, Proteins) for $mealAmount grams of $mealName as a JSON object.If you do not know the nutritional value,just give some random guess,but give the answer and do not write unnecessary information.';
+
+    // Fetch response
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(
@@ -149,6 +209,7 @@ class _NewMealPageState extends State<NewMealPage> {
               ),
               LimeGreenRoundedButtonWidget(
                 onTap: () {
+                  fetchapi();
                   try {
                     consumptionProvider.addNewMeal(
                       title: _mealTitleController.text,

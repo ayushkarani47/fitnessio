@@ -14,7 +14,6 @@ class HomeProvider with ChangeNotifier {
       User? user = FirebaseAuth.instance.currentUser;
 
       if (user != null) {
-        print(user);
         DocumentSnapshot userDataSnapshot = await FirebaseFirestore.instance
             .collection('users')
             .doc(user.uid)
@@ -44,8 +43,6 @@ class HomeProvider with ChangeNotifier {
     } catch (e) {
       rethrow;
     }
-    print("yooooooooo");
-    //print(_userData.toString());
     return _userData;
   }
 
