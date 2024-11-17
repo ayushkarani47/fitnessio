@@ -52,7 +52,7 @@ class _NewMealPageState extends State<NewMealPage> {
         Provider.of<ConsumptionProvider>(context, listen: false);
 
     //api fetch function
-   void _fetchapi() async {
+   void fetchapi() async {
   if (_mealTitleController.text.isEmpty || _mealAmountController.text.isEmpty) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text('Please enter both meal name and amount!')),
@@ -83,7 +83,7 @@ class _NewMealPageState extends State<NewMealPage> {
         .trim();
 
     // Parse response JSON
-    final Map<String, dynamic> nutritionData = jsonDecode(cleanedResponse);
+    final Map<String, dynamic> nutritionData = jsonDecode(cleanedResponse!);
 
     // Update the UI
     setState(() {
@@ -104,10 +104,10 @@ class _NewMealPageState extends State<NewMealPage> {
   }
 }
 
-final prompt =
-        'Provide nutritional content (kCal, Carbs, Fats, Proteins) for $mealAmount grams of $mealName as a JSON object.If you do not know the nutritional value,just give some random guess,but give the answer and do not write unnecessary information.';
+// final prompt =
+//         'Provide nutritional content (kCal, Carbs, Fats, Proteins) for $mealAmount grams of $mealName as a JSON object.If you do not know the nutritional value,just give some random guess,but give the answer and do not write unnecessary information.';
 
-    // Fetch response
+//     // Fetch response
     return Scaffold(
       appBar: PreferredSize(
         preferredSize: Size(
