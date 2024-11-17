@@ -63,7 +63,7 @@ class HomePageAppBarWidget extends StatelessWidget {
                     style: StyleManager.homeTitleNameTextStyle,
                   ),
                   Text(
-                    '${homeProvider.userData['first name']} ${homeProvider.userData['surname']}!',
+                    '${homeProvider.userData['name']} ${homeProvider.userData['surname']}!',
                     style: StyleManager.homeTitleDataTextStyle,
                   )
                 ],

@@ -1,6 +1,17 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
+import 'package:smart_home_app/presentation/workouts/providers/workout_provider.dart';
+import 'package:smart_home_app/presentation/workouts/widgets/workouts_app_bar.dart';
+import 'package:smart_home_app/utils/managers/asset_manager.dart';
+import 'package:smart_home_app/utils/managers/color_manager.dart';
+import 'package:smart_home_app/utils/managers/list_manager.dart';
+import 'package:smart_home_app/utils/managers/string_manager.dart';
+import 'package:smart_home_app/utils/managers/style_manager.dart';
+import 'package:smart_home_app/utils/managers/value_manager.dart';
+import 'package:smart_home_app/utils/widgets/lime_green_rounded_button.dart';
+import 'package:smart_home_app/utils/widgets/small_text_field_widget.dart';
 import 'package:smart_home_app/utils/widgets/small_text_field_widget.dart';
 import 'package:smart_home_app/utils/widgets/text_field_underlined.dart';
 import 'package:smart_home_app/utils/managers/color_manager.dart';
@@ -124,15 +135,10 @@ class AddDataWidgets extends StatelessWidget {
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton2(
-              dropdownDecoration: BoxDecoration(
-                color: ColorManager.darkGrey,
-                borderRadius: BorderRadius.circular(
-                  RadiusManager.r15.r,
-                ),
-              ),
+             
               onChanged: onChangedGender,
               value: valueGender,
-              iconSize: SizeManager.s0,
+              
               hint: Text(
                 StringsManager.genderHint,
                 style: StyleManager.registerTextfieldTextStyle,
@@ -175,13 +181,7 @@ class AddDataWidgets extends StatelessWidget {
             ),
           ),
           child: DropdownButtonHideUnderline(
-            child: DropdownButton2(
-              dropdownDecoration: BoxDecoration(
-                color: ColorManager.darkGrey,
-                borderRadius: BorderRadius.circular(
-                  RadiusManager.r15.r,
-                ),
-              ),
+            child: DropdownButton(
               onChanged: onChangedActivity,
               value: valueActivity,
               iconSize: SizeManager.s0,
@@ -249,15 +249,10 @@ class AddDataWidgets extends StatelessWidget {
           ),
           child: DropdownButtonHideUnderline(
             child: DropdownButton2(
-              dropdownDecoration: BoxDecoration(
-                color: ColorManager.darkGrey,
-                borderRadius: BorderRadius.circular(
-                  RadiusManager.r15.r,
-                ),
-              ),
+              
               onChanged: onChangedGoal,
               value: valueGoal,
-              iconSize: SizeManager.s0,
+             
               hint: Text(
                 StringsManager.goalHint,
                 style: StyleManager.registerTextfieldTextStyle,
@@ -294,6 +289,65 @@ class AddDataWidgets extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: addDataList,
+    );
+  }
+}
+
+class NewExercisePage extends StatefulWidget {
+  const NewExercisePage({super.key});
+  @override
+  State<NewExercisePage> createState() => _NewExercisePageState();
+}
+
+class _NewExercisePageState extends State<NewExercisePage> {
+  String? selectedValue;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      //appBar: WorkoutsAppBar(),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [
+            DropdownButtonHideUnderline(
+              child: DropdownButton2(
+                isExpanded: true,
+                hint: Text(
+                  'Select Item',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Theme.of(context).hintColor,
+                  ),
+                ),
+                // items: ListManager.items
+                //     .map((item) => DropdownMenuItem<String>(
+                //           value: item,
+                //           child: Text(
+                //             item,
+                //             style: const TextStyle(
+                //               fontSize: 14,
+                //             ),
+                //           ),
+                //         ))
+                //     .toList(),
+                value: selectedValue,
+                onChanged: (value) {
+                  setState(() {
+                    selectedValue = value as String;
+                  });
+                },
+                // iconSize: 24, // Set the icon size here
+                // buttonHeight: 50,
+                // buttonWidth: 160,
+                // itemHeight: 40,
+                 items: [],
+              ),
+            ),
+            // Other widgets...
+          ],
+        ),
+      ),
     );
   }
 }

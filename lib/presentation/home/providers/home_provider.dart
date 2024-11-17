@@ -14,11 +14,12 @@ class HomeProvider with ChangeNotifier {
       User? user = FirebaseAuth.instance.currentUser;
 
       if (user != null) {
+        print(user);
         DocumentSnapshot userDataSnapshot = await FirebaseFirestore.instance
             .collection('users')
             .doc(user.uid)
             .get();
-        _userData['first name'] = userDataSnapshot.get('first name');
+        _userData['name'] = userDataSnapshot.get('name');
         _userData['surname'] = userDataSnapshot.get('surname');
         _userData['age'] = userDataSnapshot.get('age');
         _userData['height'] = userDataSnapshot.get('height');
@@ -43,6 +44,8 @@ class HomeProvider with ChangeNotifier {
     } catch (e) {
       rethrow;
     }
+    print("yooooooooo");
+    //print(_userData.toString());
     return _userData;
   }
 

@@ -5,8 +5,17 @@ import 'package:smart_home_app/firebase_options.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(
-    MyApp(),
-  );
+
+  // Check if Firebase is already initialized before initializing
+  if (Firebase.apps.isEmpty) {
+    await Firebase.initializeApp(
+      name: "fitness-app-a2060",
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    print("Fitness Project connecteddddd");
+  } else {
+    print("Firebase is already initialized");
+  }
+
+  runApp(MyApp());
 }

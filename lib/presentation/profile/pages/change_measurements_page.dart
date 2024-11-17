@@ -246,15 +246,15 @@ class _ChangeMeasurementsPageState extends State<ChangeMeasurementsPage> {
                         ),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton2(
-                            dropdownDecoration: BoxDecoration(
-                              color: ColorManager.darkGrey,
-                              borderRadius: BorderRadius.circular(
-                                RadiusManager.r15.r,
-                              ),
-                            ),
+                            // dropdownDecoration: BoxDecoration(
+                            //   color: ColorManager.darkGrey,
+                            //   borderRadius: BorderRadius.circular(
+                            //     RadiusManager.r15.r,
+                            //   ),
+                            // ),
                             onChanged: _onChangedActivity,
                             value: _valueActivity,
-                            iconSize: SizeManager.s0,
+                           // iconSize: SizeManager.s0,
                             hint: Text(
                               StringsManager.activityHint,
                               style: StyleManager.registerTextfieldTextStyle,
@@ -320,15 +320,15 @@ class _ChangeMeasurementsPageState extends State<ChangeMeasurementsPage> {
                         ),
                         child: DropdownButtonHideUnderline(
                           child: DropdownButton2(
-                            dropdownDecoration: BoxDecoration(
-                              color: ColorManager.darkGrey,
-                              borderRadius: BorderRadius.circular(
-                                RadiusManager.r15.r,
-                              ),
-                            ),
+                            // dropdownDecoration: BoxDecoration(
+                            //   color: ColorManager.darkGrey,
+                            //   borderRadius: BorderRadius.circular(
+                            //     RadiusManager.r15.r,
+                            //   ),
+                            // ),
                             onChanged: _onChangedGoals,
                             value: _valueGoals,
-                            iconSize: SizeManager.s0,
+                           // iconSize: SizeManager.s0,
                             hint: Text(
                               StringsManager.goalHint,
                               style: StyleManager.registerTextfieldTextStyle,

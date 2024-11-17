@@ -1,43 +1,27 @@
 {
   "project_info": {
-    "project_number": "464153657950",
-    "project_id": "smart-home-ba5dc",
-    "storage_bucket": "smart-home-ba5dc.appspot.com"
+    "project_number": "258697946142",
+    "firebase_url": "https://fitness-app-a2060-default-rtdb.firebaseio.com",
+    "project_id": "fitness-app-a2060",
+    "storage_bucket": "fitness-app-a2060.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:464153657950:android:21aaf930855605e9fd2acf",
+        "mobilesdk_app_id": "1:258697946142:android:56188de5e92fe7e2687a0f",
         "android_client_info": {
           "package_name": "com.example.smart_home_app"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "464153657950-qh5amitkrgq1qb6ilj21j6focep61ki0.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCgAm0F5bHjKdRDgMHsmDbRxcq8ZMaf5IM"
+          "current_key": "AIzaSyDFC5TEXQYRRMF6Ogrx5wW7mWkfEX1RPOg"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "464153657950-qh5amitkrgq1qb6ilj21j6focep61ki0.apps.googleusercontent.com",
-              "client_type": 3
-            },
-            {
-              "client_id": "464153657950-66v6k9gml12v8gmpitupiddkkhe30u0j.apps.googleusercontent.com",
-              "client_type": 2,
-              "ios_info": {
-                "bundle_id": "com.example.smartHomeApp"
-              }
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }

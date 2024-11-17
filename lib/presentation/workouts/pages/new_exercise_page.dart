@@ -91,16 +91,16 @@ class _NewExercisePageState extends State<NewExercisePage> {
                   ),
                   child: DropdownButtonHideUnderline(
                     child: DropdownButton2(
-                      dropdownMaxHeight: deviceHeight / 2,
-                      dropdownDecoration: BoxDecoration(
-                        color: ColorManager.darkGrey,
-                        borderRadius: BorderRadius.circular(
-                          RadiusManager.r15.r,
-                        ),
-                      ),
+                      // dropdownMaxHeight: deviceHeight / 2,
+                      // dropdownDecoration: BoxDecoration(
+                      //   color: ColorManager.darkGrey,
+                      //   borderRadius: BorderRadius.circular(
+                      //     RadiusManager.r15.r,
+                      //   ),
+                      // ),
                       onChanged: _onChangedExercise,
                       value: _valueExercise,
-                      iconSize: SizeManager.s0,
+                      //iconSize: SizeManager.s0,
                       hint: Text(
                         StringsManager.exerciseHint,
                         style: StyleManager.registerTextfieldTextStyle,
