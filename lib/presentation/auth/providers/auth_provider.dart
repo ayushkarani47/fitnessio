@@ -232,7 +232,7 @@ class AuthProvider with ChangeNotifier {
           .doc(user!.uid)
           .update({
         'email': email,
-        'first name': name,
+        'name': name,
         'surname': surname,
         'age': age,
         'height': height,
